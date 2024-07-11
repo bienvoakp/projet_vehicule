@@ -13,6 +13,7 @@
                 <th>Année de fabrication</th>
                 <th>Catégorie</th>
             </tr>
+            
         </thead>
 
         <tbody>
