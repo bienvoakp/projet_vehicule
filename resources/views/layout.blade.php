@@ -8,27 +8,25 @@
     <title>Document</title>
 </head>
 <body class="d-flex flex-column min-vh-100">
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
-          <a class="navbar-brand" href="#">Navbar</a>
+          <a class="navbar-brand" href=" {{route('home') }} "> Voiture de Luxe </a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Home</a>
+                <a class="nav-link active" aria-current="page" href="#">Accueil</a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Link</a>
-              </li>
+
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Consulter
+                  Créer
                 </a>
                 <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="#">Voiture</a></li>
-                  <li><a class="dropdown-item" href="#">Catégorie</a></li>
+                  <li><a class="dropdown-item" href=" {{ route('voiture.create') }} ">Voiture</a></li>
+                  <li><a class="dropdown-item" href=" {{ route('categorie.create') }}  ">Catégorie</a></li>
                 </ul>
               </li>
 
@@ -41,9 +39,13 @@
         </div>
       </nav>
 
+      <div class="container">
+        <div class="text-center my-5 border b">
+        <h3><a href="#"> Accédez à l'application</a></h3>
+        </div>
+      </div>
 
-
-
+        @yield('content')
 
       <footer class="bg-body-tertiary text-dark mt-auto py-1">
         <div class="container">
