@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CategorieController;
+use App\Http\Controllers\ImageController;
 use App\Http\Controllers\VoitureController;
 use Illuminate\Support\Facades\Route;
 
@@ -26,3 +27,5 @@ Route::get('/categories/{categorie}', [CategorieController::class, 'show'])->nam
 Route::get('/categories/{categorie}/modifier', [CategorieController::class, 'edit'])->name('categorie.edit');
 Route::post('/categories/{categorie}/modifier', [CategorieController::class, 'update'])->name('categorie.update');
 Route::get('/categories/{categorie}/supprimer', [CategorieController::class, 'destroy'])->name('categorie.destroy');
+
+

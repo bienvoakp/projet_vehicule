@@ -8,7 +8,7 @@
     <a href="{{ route('home') }}" class="link-dark">
         <div class="card">
             <div class="card-body">
-                <h2><a href=" {{route('voiture.create')}} "> Accédez à l'application </a></h2>
+                <a href=" {{route('voiture.create')}} "><button type="button" class="btn btn-success display-4">Accédez à l'application</button></a>
             </div>
         </div>
     </a>
@@ -20,7 +20,7 @@
             <div class="card">
                 <div class="card-body text-center">
 
-                    <i class="fa-solid fa-calculator"></i><h5 class="card-title">Total Voitures</h5>
+                    <i class="fa-solid fa-calculator"></i><h5 class="card-title fst-italic">Total Voitures</h5>
                     <p class="card-text"> {{ $totalVoitures }} </p>
 
                 </div>
@@ -30,7 +30,8 @@
         <div class="col-sm-6">
             <div class="card">
                 <div class="card-body text-center">
-                    <h5 class="card-title">Total Categories</h5>
+                    <i class="fa-solid fa-calculator"></i>
+                    <h5 class="card-title fst-italic">Total Categories</h5>
                     <p class="card-text"> {{ $totalCategories }} </p>
 
                 </div>
@@ -75,7 +76,7 @@
 
 
                 <div class="card-body">
-                    <h5 class="card-title">Dernière voiture ajoutée </h5>
+                    <h5 class="card-title fst-italic">Dernière voiture ajoutée </h5>
                     <p class="card-text"></p>
                 </div>
                 <ul class="list-group list-group-flush text-center">

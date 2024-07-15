@@ -4,6 +4,8 @@
 <div class="container text-center mt-5">
     <a href=" {{route('voiture.create')}} "><button type="button" class="btn btn-primary">Ajouter un véhicule</button></a>
     <a href=" {{route('categorie.create')}} "><button type="button" class="btn btn-success">Ajouter une categorie</button></a>
+    
+
     <h4 class="mt-5 mb-4 text-center">Tous les véhicules</h4>
     <table class="table table-bordered text-center table-list">
         <thead>
