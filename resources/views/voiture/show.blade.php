@@ -13,7 +13,7 @@
 <div class="container text-center"><a href=" {{route('voiture.index')}} "><button type="button" class="btn btn-warning">Retour</button></a></div>
 
     <p class="text-center">
-        <table class="table table-primary table-bordered table-responsive-md">
+        <table class="table table-primary table-bordered table-responsive-md table-list">
             <tr>
                 <td class="fw-bold">Nom </td>
                 <td>Votre véhicule s'appelle {{$voiture->nom }} </td>
