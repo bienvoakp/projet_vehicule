@@ -1,0 +1,4 @@
+table.table-list td,
+table.table-list th {
+    vertical-align: middle;
+}
