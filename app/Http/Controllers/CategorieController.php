@@ -13,10 +13,14 @@ class CategorieController extends Controller
     public function index()
     {
         //
-        $categories = Categorie::all();
-        return view("categorie.index", [
-            'categories' => $categories
-        ]);
+        $categories = Categorie::withCount('voiture')->get();
+
+        return view("categorie.index", compact('categories'));
+
+        // $categories = Categorie::all();
+        // return view("categorie.index", [
+        //     'categories' => $categories
+        // ]);
     }
 
     /**
@@ -68,6 +72,8 @@ class CategorieController extends Controller
     public function update(Request $request, Categorie $categorie)
     {
         //
+        $categorie->update($request->all());
+
         return redirect()->route('categorie.index');
     }
 

@@ -15,9 +15,7 @@
       </div>
       <div class="col-md-4">
         <h5></h5>
-        <p><i class="fa fa-map-marker"></i></p>
-        <p><i class="fa fa-phone"></i></p>
-        <p><i class="fa fa-envelope"></i></p>
+        
       </div>
     </div>
     <div class="row mt-3">

@@ -14,6 +14,8 @@
         <thead>
             <tr>
                 <th>Nom</th>
+                <th>Nombre de voiture par catégorie</th>
+                <th>Actions</th>
             </tr>
 
         </thead>
@@ -22,7 +24,12 @@
             @foreach ($categories as $categorie )
             <tr>
 
-            <td> {{ $categorie->nom }} </td>
+                <td> {{ $categorie->nom }} </td>
+                <td> Il y a {{ $categorie->voiture_count }} voiture(s) dans cette catégorie</td>
+                <td>
+                    <a href=" {{route('categorie.edit', ['categorie'=>$categorie->id])}}  "><button type="button" class="btn btn-warning"><i class="fa-solid fa-pen"></i></button></a>
+                    <a href=" {{route('categorie.destroy', ['categorie'=>$categorie->id])}} "><button type="button" class="btn btn-danger"><i class="fa-solid fa-trash"></i></button></a>
+                </td>
 
             </tr>
             @endforeach

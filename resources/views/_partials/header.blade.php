@@ -6,15 +6,13 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Accueil</a>
-          </li>
+
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Créer
             </a>
             <ul class="dropdown-menu"  aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item" href="{{ route('voiture.create') }}">Voiture</a></li>
+              <li><a class="dropdown-item" href="{{ route('voiture.create') }}">Véhicule</a></li>
               <li><a class="dropdown-item" href="{{ route('categorie.create') }}">Catégorie</a></li>
             </ul>
           </li>

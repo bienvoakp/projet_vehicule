@@ -19,7 +19,8 @@
         <div class="col-sm-6">
             <div class="card">
                 <div class="card-body text-center">
-                    <h5 class="card-title">Total Voitures</h5>
+
+                    <i class="fa-solid fa-calculator"></i><h5 class="card-title">Total Voitures</h5>
                     <p class="card-text"> {{ $totalVoitures }} </p>
 
                 </div>
@@ -39,7 +40,7 @@
 </div>
 
 
-<div class="mt-3" style="padding-bottom: 12rem">
+{{-- <div class="mt-3" style="padding-bottom: 12rem">
     <div class="row">
         {{-- <div class="col-sm-6">
             <div class="card">
@@ -51,13 +52,36 @@
             </div>
         </div> --}}
 
-        <div class="col-sm-6">
+        {{-- <div class="col-sm-6">
             <div class="card">
                 <div class="card-body text-center">
                     <h5 class="card-title">Dernière mise à jour</h5>
                     <p class="card-text"> {{ $derniereVoiture->updated_at->translatedFormat('l,j F Y') }} </p>
                 </div>
             </div>
+        </div>
+    </div>
+</div> --}}
+
+<div class="container d-flex justify-content-center align-items-center" style="height: 100vh;">
+    <div class="card" style="width: 18rem; margin-top: -350px;">
+        <img class="card-img-top" src="{{ asset('storage/app/public/images/' . $derniereVoiture->image) }}" alt="Image de la dernière voiture">
+
+        <div class="card-body">
+            <h5 class="card-title">Dernière voiture ajoutée </h5>
+            <p class="card-text"></p>
+        </div>
+        <ul class="list-group list-group-flush text-center">
+            <li class="list-group-item fw-bold">Nom : {{ $derniereVoiture->nom  }} </li>
+            <li class="list-group-item fw-bold">Marque : {{ $derniereVoiture->marque  }}  </li>
+            <li class="list-group-item fw-bold">Prix : {{ $derniereVoiture->prix  }} </li>
+            <li class="list-group-item fw-bold">Âge : {{ now()->year - $derniereVoiture->annee_fabrication }} ans</li>
+            {{-- <li class="list-group-item fw-bold">Âge : {{ $derniereVoiture->created_at->diffForHumans()  }}</li> Pour donner la date de la dernière voiture créée --}}
+            <li class="list-group-item fw-bold">Catégorie : {{ $derniereVoiture->categorie->nom  }} </li>
+        </ul>
+        <div class="card-body">
+            <p class="card-text"></p>
+            <p class="card-text"></p>
         </div>
     </div>
 </div>

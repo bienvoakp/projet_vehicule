@@ -3,7 +3,7 @@
 @section('content')
 
 
-<div class="container text-center"><a href=" {{route('voiture.index')}} "><button type="button" class="btn btn-primary">Liste des véhicules</button></a></div>
+<div class="container text-center mt-4"><a href=" {{route('voiture.index')}} "><button type="button" class="btn btn-primary">Liste des véhicules</button></a></div>
 
 <div class="container">
     <h4 class="mt-5 mb-4">Formulaire de création</h4>
