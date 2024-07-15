@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('marque');
             $table->integer('annee_fabrication');
             $table->date('date_achat');
+            $table->foreignId('categorie_id')->constrained();
             $table->timestamps();
         });
     }

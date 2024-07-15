@@ -1,8 +1,11 @@
 @extends('layout')
 
 @section('content')
+<div class="container text-center "><a href=" {{route('categorie.index')}} "><button type="button" class="btn btn-primary">Toutes les catégories</button></a></div>
 
-<h4 class="mt-5 mb-4">Ajouter une catégorie </h4>
+<div class="container">
+
+
     <form class="row g-3" action=" {{ route('categorie.store') }}" method="POST" enctype = multipart/form-data>
         <div class="col-12">
             @csrf
@@ -21,6 +24,7 @@
 
 
 </form>
+
 </div>
 
 @endsection

@@ -4,9 +4,11 @@ use App\Http\Controllers\CategorieController;
 use App\Http\Controllers\VoitureController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('layout');
-})->name('home');
+//  Route::get('/', function () {
+//      return view('index');
+//    })->name('home');
+
+Route::get('/', [VoitureController::class, 'home'])->name('home');
 
 Route::get('/voitures', [VoitureController::class, 'index'])->name('voiture.index');
 Route::get('/voitures/ajouter', [VoitureController::class, 'create'])->name('voiture.create');
