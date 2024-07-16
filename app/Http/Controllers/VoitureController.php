@@ -11,17 +11,18 @@ use Illuminate\Support\Facades\Storage;
 class VoitureController extends Controller
 {
 
-    public function home(){
-         $totalVoitures = Voiture::count();
-         $totalCategories = Categorie::count();
+    public function home()
+    {
+        $totalVoitures = Voiture::count();
+        $totalCategories = Categorie::count();
         //  Ceci récupère la dernière voiture créée
-         $derniereVoiture = Voiture::latest()->first();
+        $derniereVoiture = Voiture::latest()->first();
 
-         return view('index', [
-             'totalVoitures'=>$totalVoitures,
-             'totalCategories' => $totalCategories,
-             'derniereVoiture' => $derniereVoiture,
-         ]);
+        return view('index', [
+            'totalVoitures' => $totalVoitures,
+            'totalCategories' => $totalCategories,
+            'derniereVoiture' => $derniereVoiture,
+        ]);
     }
 
     /**
@@ -29,7 +30,7 @@ class VoitureController extends Controller
      */
     public function index()
     {
-        $voitures=Voiture::with('categorie')->paginate(5);
+        $voitures = Voiture::with('categorie')->paginate(5);
 
 
         // $voitures = Voiture::all();
@@ -59,9 +60,21 @@ class VoitureController extends Controller
             'image' => 'required|image|mimes:png,jpg,jpeg,gif,svg|max:2048'
         ]);
 
+        $gallerie = null;
+        
+        if ($gallerieFiles = $request->file('gallerie')) {
+            foreach ($gallerieFiles as  $gf) {
+                $g = $gf->hashName();
+                Storage::put('public/images', $gf);
+                $gallerie[] = $g;
+            }
+            $gallerie = json_encode($gallerie);
+        }
+
         $imageFile = $request->file('image');
-        $imageName = time() . '-' . $imageFile->getClientOriginalName();
-        $imagePath = $imageFile->storeAs('public/images', $imageName);
+        $image = $imageFile->hashName();
+        Storage::put('public/images', $imageFile);
+
 
         Voiture::create([
             'nom' => $request->input('nom'),
@@ -70,7 +83,8 @@ class VoitureController extends Controller
             'date_achat' => $request->input('date_achat'),
             'annee_fabrication' => $request->input('annee_fabrication'),
             'categorie_id' => $request->input('categorie_id'),
-            'image' => $imageName
+            'image' => $image,
+            'gallerie' => $gallerie
         ]);
 
         return redirect()->route('voiture.index')->with('success', 'Voiture ajoutée avec succès');
@@ -85,7 +99,7 @@ class VoitureController extends Controller
 
         $voiture->load('categorie');
         return view('voiture.show', [
-            'voiture' =>$voiture
+            'voiture' => $voiture
         ]);
     }
 
@@ -98,7 +112,7 @@ class VoitureController extends Controller
         $categories = Categorie::all();
         return view('voiture.edit', [
             'voiture' => $voiture,
-            'categories' =>$categories
+            'categories' => $categories
         ]);
     }
 

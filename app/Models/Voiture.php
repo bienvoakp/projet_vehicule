@@ -14,7 +14,8 @@ class Voiture extends Model
     'date_achat',
     'annee_fabrication',
     'categorie_id',
-    'image'
+    'image',
+    'gallerie'
 ];
     public function categorie(){
         return $this->belongsTo(Categorie::class);
