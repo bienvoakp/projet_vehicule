@@ -88,8 +88,9 @@
                     <li class="list-group-item fw-bold">Catégorie : {{ $derniereVoiture->categorie->nom  }} </li>
                 </ul>
                 <div class="card-body">
-                    <p class="card-text"></p>
-                    <p class="card-text"></p>
+                    <p class="card-text text-center">
+                        <a href=" {{route('voiture.show', $derniereVoiture->id)}} "><button type="button" class="btn btn-success">Plus de Détails</button></a>
+                    </p>
                 </div>
             </div>
         </div>

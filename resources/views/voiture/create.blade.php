@@ -63,7 +63,7 @@
                     </div>
                     <div class="text-center form-group col-md-12">
                             <label for="image" class="form-label">Insérez une image</label>
-                            <input id = "image" type="file" class="form-control" name = "image" multiple>
+                            <input id = "image" type="file" class="form-control" name = "image">
                     </div>
                     <div class="text-center form-group col-md-12">
                             <label for="gallerie" class="form-label">Gallerie</label>

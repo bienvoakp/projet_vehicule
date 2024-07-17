@@ -61,7 +61,7 @@ class VoitureController extends Controller
         ]);
 
         $gallerie = null;
-        
+
         if ($gallerieFiles = $request->file('gallerie')) {
             foreach ($gallerieFiles as  $gf) {
                 $g = $gf->hashName();
