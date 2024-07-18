@@ -21,7 +21,7 @@
     </main>
 
 
-    <footer class="bg-body-tertiary text-dark mt-auto py-1">
+    <footer class="bg-body-tertiary text-dark py-1 mt-auto">
         @include('_partials.footer')
     </footer>
 

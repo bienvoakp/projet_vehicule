@@ -1,21 +1,22 @@
 @extends('layout')
 
 @section('content')
+<div class="container">
+    <h4 class="mt-5 mb-4">FORMULAIRE DE CREATION</h4>
+</div>
+
 <div class="row">
   <div class="col-md-4 ml-auto">
-    <div class="container text-center mt-4"><a href=" {{route('voiture.index')}} "><button type="button" class="btn btn-primary">Liste des véhicules</button></a></div>
+    <div class="container text-center mt-2"><a href=" {{route('voiture.index')}} "><button type="button" class="btn btn-primary">Liste des véhicules</button></a></div>
 
   </div>
 </div>
 
 {{-- <div class="container text-center mt-4"><a href=" {{route('voiture.index')}} "><button type="button" class="btn btn-primary">Liste des véhicules</button></a></div> --}}
 
-<div class="container">
-    <h4 class="mt-5 mb-4">Formulaire de création</h4>
 
-</div>
         <div class="container">
-                <form class="row g-3" action="{{ route('voiture.store') }}" method="POST" enctype="multipart/form-data">
+                <form class="row g-3 mt-3" action="{{ route('voiture.store') }}" method="POST" enctype="multipart/form-data">
                     <div class="col-12">
                         @csrf
                     </div>
@@ -69,10 +70,14 @@
                             <label for="gallerie" class="form-label">Gallerie</label>
                             <input id = "gallerie" type="file" class="form-control" name = "gallerie[]" multiple>
                     </div>
-                    <div class="col-12">
-                        <button type="submit" class="btn btn-primary">Enregistrer</button>
-                        <button type="reset" class="btn btn-secondary">Annuler</button>
+                    <div class="container">
+                        <div class="col-12 mt-4">
+                            <button type="submit" class="btn btn-primary">Enregistrer</button>
+                            <button type="reset" class="btn btn-secondary">Annuler</button>
+                        </div>
+
                     </div>
+
 
             </form>
     </div>

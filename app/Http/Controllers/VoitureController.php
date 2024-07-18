@@ -28,9 +28,32 @@ class VoitureController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $voitures = Voiture::with('categorie')->paginate(5);
+
+        // Pour commencer à intégrer la logique de recherche, on commence par
+        // créer une requête sur le modèle Voiture.
+
+        $query = Voiture::query();
+
+         // On vérifie si l'utilisateur a fait une requête de recherche et si c'est la cas,
+        // On va récupérer le terme de recherche
+
+        //dd("{$request->query('recherche')}");
+
+        if ($request->filled('search')) {
+            // Récupère le terme de recherche
+            $search = $request->input('search');
+
+            // On va ajouter des conditions de recherche à la requête
+            $query->where('nom', 'like', "%{$search}%")
+                ->orWhere('marque', 'like', "%{$search}%")
+                ->orWhereHas('categorie', function ($q) use ($search) {
+                    $q->where('nom', 'like', "%{$search}%");
+                });
+        }
+
+        $voitures = $query->with('categorie')->paginate(5);
 
 
         // $voitures = Voiture::all();
@@ -93,10 +116,10 @@ class VoitureController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Voiture $voiture)
+    public function show(Request $request, Voiture $voiture)
     {
         //
-
+        dd($request->all());
         $voiture->load('categorie');
         return view('voiture.show', [
             'voiture' => $voiture
@@ -122,8 +145,44 @@ class VoitureController extends Controller
     public function update(Request $request, Voiture $voiture)
     {
         //
-        $voiture->update($request->all());
-        return redirect()->route('voiture.index');
+        //  Je mets à jour la nouvelle image
+        if ($request->hasFile('image')) {
+
+            // Supprimer l'ancienne image
+            if ($voiture->image) {
+                Storage::delete('public/images/' . $voiture->image);
+            }
+
+            // Télécharge une nouvelle image
+            $imageFile = $request->file('image');
+            $image = $imageFile->hashName();
+            Storage::put('public/images', $imageFile);
+            $voiture->image = $image;
+        }
+
+        // Je m'occupe de la gallerie d'images ici
+        if ($request->hasFile('gallerie')) {
+            $gallerie = [];
+
+            foreach ($request->file('gallerie') as $gf) {
+                $g = $gf->hashName();
+                Storage::put('public/images', $gf);
+                $gallerie[] = $g;
+            }
+            // Je supprime les anciennes images de la gallerie
+            if ($voiture->gallerie) {
+                $oldGallerie = json_decode($voiture->gallerie);
+                foreach ($oldGallerie as $oldImage) {
+                    Storage::delete('public/images/' . $oldImage);
+                }
+            }
+
+            $voiture->gallerie = json_encode($gallerie);
+        }
+
+        $voiture->update($request->except(['image', 'gallerie']));
+        // $voiture->update($request->all());
+        return redirect()->route('voiture.index')->with('success', 'Image modifiée avec succès');
     }
 
     /**

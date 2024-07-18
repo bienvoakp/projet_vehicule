@@ -15,13 +15,13 @@
       </div>
       <div class="col-md-4">
         <h5></h5>
-        
+
       </div>
     </div>
     <div class="row mt-3">
       <div class="col text-center">
-        <a href="#" class="text-white mr-2"><i class="fa fa-facebook"></i></a>
-        <a href="#" class="text-white mr-2"><i class="fa fa-twitter"></i></a>
+        <a href="#" class="text-white mr-2"></a>
+        <a href="#" class="text-white mr-2"></a>
 
       </div>
     </div>
