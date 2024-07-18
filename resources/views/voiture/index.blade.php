@@ -6,16 +6,11 @@
     </div>
 
     <div class="container text-start mt-5">
-        <div class="container">
             <a href=" {{ route('voiture.create') }} "><button type="button" class="btn btn-primary">Ajouter un
                     véhicule</button></a>
-        </div>
-        <div class="container mt-2">
+
             <a href=" {{ route('categorie.create') }} "><button type="button" class="btn btn-success">Ajouter une
                     categorie</button></a>
-
-        </div>
-
 
         <table class="table table-bordered text-center mt-5 table-list">
             <thead>

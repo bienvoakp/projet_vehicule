@@ -8,11 +8,12 @@
     @include('_partials.link')
 
     <title> @yield('title') </title>
+
 </head>
 
 <body class="d-flex flex-column min-vh-100">
 
-    <header>
+    <header class="mb-5">
         @include('_partials.header')
     </header>
 

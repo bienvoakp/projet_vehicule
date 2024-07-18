@@ -119,7 +119,7 @@ class VoitureController extends Controller
     public function show(Request $request, Voiture $voiture)
     {
         //
-        dd($request->all());
+        // dd($request->all());
         $voiture->load('categorie');
         return view('voiture.show', [
             'voiture' => $voiture

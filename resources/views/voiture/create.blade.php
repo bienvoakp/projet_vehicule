@@ -5,9 +5,9 @@
     <h4 class="mt-5 mb-4">FORMULAIRE DE CREATION</h4>
 </div>
 
-<div class="row">
+<div class="container">
   <div class="col-md-4 ml-auto">
-    <div class="container text-center mt-2"><a href=" {{route('voiture.index')}} "><button type="button" class="btn btn-primary">Liste des véhicules</button></a></div>
+    <div class="text-start mt-2"><a href=" {{route('voiture.index')}} "><button type="button" class="btn btn-primary">Liste des véhicules</button></a></div>
 
   </div>
 </div>
@@ -71,7 +71,7 @@
                             <input id = "gallerie" type="file" class="form-control" name = "gallerie[]" multiple>
                     </div>
                     <div class="container">
-                        <div class="col-12 mt-4">
+                        <div class="col-12 mb-4 mt-4">
                             <button type="submit" class="btn btn-primary">Enregistrer</button>
                             <button type="reset" class="btn btn-secondary">Annuler</button>
                         </div>
