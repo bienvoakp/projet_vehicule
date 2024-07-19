@@ -87,8 +87,9 @@
                         @endif
 
 
-                        <div class=" container card-body">
-                            <h5 class="card-title fst-italic">Dernière voiture ajoutée </h5>
+                        <div class=" container card-body text-center">
+                            <h5 class="card-title fst-italic">Dernière voiture </h5>
+                            <hr>
                             <small> Ajouté le {{ $formattedDate }} </small>
                             <p class="card-text"></p>
                         </div>

@@ -27,8 +27,14 @@
             <tbody>
                 @foreach ($voitures as $voiture)
                     <tr>
-
+                        {{-- Début condition pour faire la recherche des voitures --}}
+                        @if ($search = request()->query('search'))
+                        <td> {!! App\Services\SearchHelper::replaceSearchByMark($search,$voiture->nom) !!} </td>
+                        @else
                         <td> {{ $voiture->nom }} </td>
+                        @endif
+                        {{-- Fin de la condition --}}
+
                         <td> {{ $voiture->marque }} </td>
                         <td>
                             <div class="mx-auto overflow-hidden ratio-1x1 rounded-3 card" style="height: 5rem;width: 5rem;">

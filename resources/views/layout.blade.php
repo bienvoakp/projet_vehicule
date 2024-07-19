@@ -11,7 +11,7 @@
 
 </head>
 
-<body class="d-flex flex-column min-vh-100">
+<body class="d-flex flex-column min-vh-100" style="background-color: #FAF5E4;">
 
     <header class="mb-5">
         @include('_partials.header')

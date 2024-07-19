@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top shadow-sm">
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top shadow-sm" style="background-color: #0C848F">
     <div class="container">
         <a class="navbar-brand" href="{{ route('home') }}">
             <img src="{{ asset('storage/images/logo_rem.png') }}" alt="logo" height="50" class="d-inline-block align-top">
@@ -34,7 +34,7 @@
             <form class="d-flex ms-lg-3" role="search" action="{{ route('voiture.index') }}" method="GET">
                 {{ csrf_field() }}
                 <input class="form-control me-2" type="search" name="search" placeholder="Rechercher une voiture" aria-label="Search" value="{{ request('search') }}">
-                <button class="btn btn-outline-light" type="submit">Rechercher</button>
+                <button class="btn btn-outline-light" type="submit"><i class="fa-sharp fa-solid fa-magnifying-glass"></i></button>
             </form>
         </div>
     </div>

@@ -10,7 +10,7 @@
     @endphp
 
     <div class="container">
-        <h2 class="mt-3 text-start "> Détails du véhicule </h2>
+        <h2 class="mt-5 text-start "> Détails du véhicule </h2>
 
     </div>
 
