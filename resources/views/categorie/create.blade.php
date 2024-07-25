@@ -6,7 +6,7 @@
 <div class="container">
 
 
-    <form class="row g-3" action=" {{ route('categorie.store') }}" method="POST" enctype = multipart/form-data>
+    <form class="row g-3 mb-5" action=" {{ route('categorie.store') }}" method="POST" enctype = multipart/form-data>
         <div class="col-12">
             @csrf
         </div>

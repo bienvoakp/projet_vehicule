@@ -7,7 +7,7 @@
     @php
         use Carbon\Carbon;
         Carbon::setLocale('fr');
-        $formattedDate = Carbon::parse($derniereVoiture->create_at)->translatedFormat('l,j F Y');
+        $formattedDate = Carbon::parse($derniereVoiture->created_at  )->translatedFormat('l,j F Y');
     @endphp
 
     <div class="container">
@@ -94,7 +94,7 @@
                             <p class="card-text"></p>
                         </div>
                         <ul class="list-group list-group-flush text-center">
-                            <li class="list-group-item fw-bold"> {{ $derniereVoiture->nom }} </li>
+                            <li class="list-group-item fw-bold"> {{ $derniereVoiture->matricule }} </li>
                             <li class="list-group-item fw-bold"> {{ $derniereVoiture->marque }} </li>
                             {{-- <li class="list-group-item fw-bold">
                                 {{ now()->year - $derniereVoiture->annee_fabrication }} ans</li> --}}

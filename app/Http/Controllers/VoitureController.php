@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Categorie;
 use App\Models\Voiture;
 use Illuminate\Support\Facades\Storage;
+use App\Models\Tag;
 
 
 class VoitureController extends Controller
@@ -36,7 +37,7 @@ class VoitureController extends Controller
 
         $query = Voiture::query();
 
-         // On vérifie si l'utilisateur a fait une requête de recherche et si c'est la cas,
+        // On vérifie si l'utilisateur a fait une requête de recherche et si c'est la cas,
         // On va récupérer le terme de recherche
 
         //dd("{$request->query('recherche')}");
@@ -46,14 +47,12 @@ class VoitureController extends Controller
             $search = $request->input('search');
 
             // On va ajouter des conditions de recherche à la requête
-            $query->where('nom', 'like', "%{$search}%")
+            $query->where('matricule', 'like', "%{$search}%")
                 ->orWhere('marque', 'like', "%{$search}%")
-                ->orWhereHas('categorie', function ($q) use ($search) {
-                    $q->where('nom', 'like', "%{$search}%");
-                });
+                ->orWhereRelation('categorie', 'matricule', 'like', "%{$search}%");
         }
 
-        $voitures = $query->with('categorie')->paginate(5);
+        $voitures = $query->with('categorie', 'tags')->distinct()->paginate(5);
 
 
         // $voitures = Voiture::all();
@@ -69,9 +68,11 @@ class VoitureController extends Controller
     public function create()
     {
         $categories = Categorie::all();
+        $tags = Tag::all(); // Récupérer tous les tags disponibles
         return view('voiture.create', [
             'categories' => $categories,
-            'voiture' => new Voiture()
+            'voiture' => new Voiture(),
+            'tags' => $tags
         ]);
     }
 
@@ -100,8 +101,8 @@ class VoitureController extends Controller
         Storage::put('public/images', $imageFile);
 
 
-        Voiture::create([
-            'nom' => $request->input('nom'),
+        $voiture = Voiture::create([
+            'matricule' => $request->input('matricule'),
             'marque' => $request->input('marque'),
             'prix' => $request->input('prix'),
             'date_achat' => $request->input('date_achat'),
@@ -110,6 +111,22 @@ class VoitureController extends Controller
             'image' => $image,
             'gallerie' => $gallerie
         ]);
+
+
+        if ( $tags_request = $request->input('tags')) {
+
+            $tags_request = explode(',',$tags_request);
+
+            foreach ($tags_request as $t) {
+
+                $tag = new Tag();
+                $tag->name =($t);
+                $tag->save();
+
+                $voiture->tags()->attach($tag);
+            }
+        }
+
 
         return redirect()->route('voiture.index')->with('success', 'Voiture ajoutée avec succès');
     }
@@ -161,7 +178,7 @@ class VoitureController extends Controller
             $voiture->image = $image;
         }
 
-        // Je m'occupe de la gallerie d'images ici
+        // gallerie d'images
         if ($request->hasFile('gallerie')) {
             $gallerie = [];
 

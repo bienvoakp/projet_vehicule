@@ -12,10 +12,10 @@
             <a href=" {{ route('categorie.create') }} "><button type="button" class="btn btn-success">Ajouter une
                     categorie</button></a>
 
-        <table class="table table-bordered text-center mt-5 table-list">
+        <table class="table table-bordered text-center mt-5 mb-4 table-list">
             <thead>
                 <tr>
-                    <th>Nom</th>
+                    <th>Matricule</th>
                     <th>Marque</th>
                     <th>Image</th>
                     <th>Actions</th>
@@ -29,13 +29,17 @@
                     <tr>
                         {{-- Début condition pour faire la recherche des voitures --}}
                         @if ($search = request()->query('search'))
-                        <td> {!! App\Services\SearchHelper::replaceSearchByMark($search,$voiture->nom) !!} </td>
+                        <td> {!! App\Services\SearchHelper::replaceSearchByMark($search,$voiture->matricule) !!} </td>
                         @else
-                        <td> {{ $voiture->nom }} </td>
+                        <td> {{ $voiture->matricule }} </td>
                         @endif
                         {{-- Fin de la condition --}}
 
+                        @if ($search = request()->query('search'))
+                        <td> {!! App\Services\SearchHelper::replaceSearchByMark($search,$voiture->marque) !!} </td>
+                        @else
                         <td> {{ $voiture->marque }} </td>
+                        @endif
                         <td>
                             <div class="mx-auto overflow-hidden ratio-1x1 rounded-3 card" style="height: 5rem;width: 5rem;">
                                 @if ($voiture->image)

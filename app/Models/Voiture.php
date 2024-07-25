@@ -10,7 +10,7 @@ class Voiture extends Model
     use HasFactory;
     // protected fillable sert à protéger les variables
 
-    protected $fillable = ['nom',
+    protected $fillable = ['matricule',
     'prix',
     'marque',
     'date_achat',
@@ -32,4 +32,10 @@ class Voiture extends Model
     {
         $this->attributes['gallerie'] = json_encode($value);
     }
+
+    public function tags()
+    {
+        return $this->belongsToMany(Tag::class, 'tag_voiture', 'voiture_id', 'tag_id');
+    }
+
 }

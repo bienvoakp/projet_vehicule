@@ -11,13 +11,19 @@
 
 </head>
 
-<body class="d-flex flex-column min-vh-100" style="background-color: #FAF5E4;">
+<body class="d-flex flex-column min-vh-100">
 
     <header class="mb-5">
         @include('_partials.header')
     </header>
 
     <main>
+       <div class="container">
+        <h3>@yield('page_title')</h3>
+        <div>
+            @yield('actions')
+        </div>
+       </div>
         @yield('content')
     </main>
 

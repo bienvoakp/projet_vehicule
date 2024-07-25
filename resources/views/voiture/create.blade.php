@@ -22,8 +22,8 @@
                     </div>
                     <div class="col-md-6">
                         <div>
-                            <label for="nom" name="nom" class="form-label">Nom du véhicule</label>
-                            <input id="nom" type="text" class="form-control" name="nom">
+                            <label for="matricule" name="matricule" class="form-label">Matricule</label>
+                            <input id="matricule" type="text" class="form-control" name="matricule">
                         </div>
                     </div>
                     <div class="col-md-6">
@@ -44,12 +44,17 @@
                             <input id = "date_achat" type="date" class="form-control" name= "date_achat" required>
                         </div>
                     </div>
+
+
                     <div class="col-md-6">
                         <div>
                             <label for="annee_fabrication" name= "annee_fabrication" class="form-label">Année de fabrication</label>
                             <input id = "annee_fabrication" type="number" class="form-control" name = "annee_fabrication">
                         </div>
                     </div>
+
+
+
                     <div class="col-md-6">
                         <div>
                             <label for="categorie_id" name="categorie_id" class="form-label">Catégorie du véhicule </label>
@@ -62,6 +67,15 @@
                             </select>
                         </div>
                     </div>
+
+                    {{-- Les tags sont créés ici --}}
+
+                    <div class="form-group ">
+                        <label for="tags">Tags</label>
+                        <input type="text" name="tags" id="tags" class="form-control">
+                    </div>
+
+
                     <div class="text-center form-group col-md-12">
                             <label for="image" class="form-label">Insérez une image</label>
                             <input id = "image" type="file" class="form-control" name = "image">
@@ -77,11 +91,11 @@
                         </div>
 
                     </div>
-
-
             </form>
     </div>
 
 </div>
+
+
 
 @endsection
