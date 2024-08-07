@@ -2,10 +2,8 @@
 
 namespace App\Providers;
 
+use Illuminate\Auth\Notifications\ResetPassword;
 use Illuminate\Support\ServiceProvider;
-use Carbon\Carbon;
-use Illuminate\Pagination\Paginator;
-
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -22,20 +20,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
-        Carbon::setLocale('fr');
-        Paginator::useBootstrapFive();
-        Paginator::useBootstrapFour();
-
-        // Ajouter la fonction de surlignage
-        if (!function_exists('highlightSearchTerm')) {
-            function highlightSearchTerm($text, $search)
-            {
-                if ($search) {
-                    return preg_replace('/(' . preg_quote($search, '/') . ')/i', '<mark>$1</mark>', $text);
-                }
-                return $text;
-            }
-        }
+        ResetPassword::createUrlUsing(function (object $notifiable, string $token) {
+            return config('app.frontend_url')."/password-reset/$token?email={$notifiable->getEmailForPasswordReset()}";
+        });
     }
 }

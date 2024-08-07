@@ -66,16 +66,6 @@
 
     </div>
 
-    {{-- <div class="container mt-3">
-        <div class="col-lg-3 col-md-6 text-center">
-            <div class="mb-3">
-                <img src="{{ asset('storage/images/' . $voiture->image) }}" alt="{{ $voiture->matricule }}"
-                    style="max-width: 300px;">
-                <p class="mb-3"> {{ $voiture->matricule }} </p>
-
-            </div>
-        </div> --}}
-
     </div>
 
     <div class="container-xxl py-5">
@@ -92,10 +82,6 @@
 
                                     <img class="img-fluid h-100 object-fit-cover w-100" src="{{ asset('storage/images/' . $image) }}" alt="Autres images"
                                         style="">
-
-                                {{-- <div class="bg-light text-center p-4">
-                                    <small> {{ $voiture->matricule }} </small>
-                                </div> --}}
                         </div>
                     @endforeach
                 @else

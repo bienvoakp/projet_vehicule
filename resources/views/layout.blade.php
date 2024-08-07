@@ -2,13 +2,9 @@
 <html lang="fr">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    @include('_partials.meta')
     @include('_partials.link')
-
     <title> @yield('title') </title>
-
 </head>
 
 <body class="d-flex flex-column min-vh-100">
@@ -18,12 +14,12 @@
     </header>
 
     <main>
-       <div class="container">
-        <h3>@yield('page_title')</h3>
-        <div>
-            @yield('actions')
+        <div class="container">
+            <h3>@yield('page_title')</h3>
+            <div>
+                @yield('actions')
+            </div>
         </div>
-       </div>
         @yield('content')
     </main>
 

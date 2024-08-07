@@ -178,7 +178,7 @@ class VoitureController extends Controller
             $voiture->image = $image;
         }
 
-        // gallerie d'images
+        // showgallerie d'images
         if ($request->hasFile('gallerie')) {
             $gallerie = [];
 
